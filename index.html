@@ -1,1 +1,43 @@
-  <button onclick="limpar()">Limpar</button>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Simples</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, select, button { padding: 8px; margin: 5px; font-size: 16px; }
+    #resultado { font-size: 24px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Calculadora Simples</h1>
+  <input type="number" id="n1" placeholder="Número 1">
+  <select id="op">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">×</option>
+    <option value="/">÷</option>
+  </select>
+  <input type="number" id="n2" placeholder="Número 2">
+  <button onclick="calcular()">Calcular</button>
+  <div id="resultado"></div>
+
+  <script>
+    function calcular() {
+      const n1 = parseFloat(document.getElementById("n1").value);
+      const n2 = parseFloat(document.getElementById("n2").value);
+      const op = document.getElementById("op").value;
+      let resultado;
+
+      if (isNaN(n1) || isNaN(n2)) {
+        resultado = "Digite dois números!";
+      } else if (op === "+") resultado = n1 + n2;
+      else if (op === "-") resultado = n1 - n2;
+      else if (op === "*") resultado = n1 * n2;
+      else if (op === "/") resultado = n2 === 0 ? "Não dá para dividir por zero" : n1 / n2;
+
+      document.getElementById("resultado").innerText = "Resultado: " + resultado;
+    }
+  </script>
+</body>
+</html>
